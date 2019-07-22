@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //creates adapter
         mylist adapter = new mylist(generateSimpleList());
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_list_view);
         recyclerView.setHasFixedSize(true);
