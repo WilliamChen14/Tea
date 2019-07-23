@@ -1,9 +1,9 @@
 package com.example.bchen.billsapp;
 
-public class listitem {
+public class Contact {
     private String listText;
 
-    public listitem(final String simpleText) {
+    public Contact(final String simpleText) {
         setListItem(simpleText);
     }
 

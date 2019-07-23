@@ -4,26 +4,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
-public  class  mylist extends RecyclerView.Adapter{
+public  class ContactAdapter extends RecyclerView.Adapter{
 
-    private List<listitem> models;
-    public  mylist(List<listitem> list){
+    List<Contact> models;
+
+    private ContactViewHolder.ItemClickListener listener;
+    public ContactAdapter(List<Contact> list, ContactViewHolder.ItemClickListener listener){
         models = list;
+        this.listener = listener;
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new listViewHolder(view);
+        return new ContactViewHolder(view, listener);
     }
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-        ((listViewHolder) holder).bindData(models.get(position));
+        ((ContactViewHolder) holder).bindData(models.get(position));
     }
 
     @Override
@@ -35,4 +38,6 @@ public  class  mylist extends RecyclerView.Adapter{
     public int getItemViewType(final int position) {
         return R.layout.item_layout;
     }
+
+
 }

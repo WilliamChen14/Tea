@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContactViewHolder.ItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //creates adapter
-        mylist adapter = new mylist(generateSimpleList());
+        final ContactAdapter adapter = new ContactAdapter(generateSimpleList(), this);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_list_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                adapter.models.add(new Contact("test"));
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -63,13 +63,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private List<listitem> generateSimpleList() {
-        List<listitem> simpleViewModelList = new ArrayList<>();
+    private List<Contact> generateSimpleList() {
+        List<Contact> simpleViewModelList = new ArrayList<>();
 
-        for (int i = 0; i < 1; i++) {
-            simpleViewModelList.add(new listitem(String.format("This is item %d", i)));
+        for (int i = 0; i < 2; i++) {
+            simpleViewModelList.add(new Contact(String.format("This is item %d", i)));
         }
 
         return simpleViewModelList;
+    }
+
+    @Override
+    public void onItemClick(View v){
+        //when item is clicked do this
     }
 }
