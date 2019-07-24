@@ -3,7 +3,9 @@ package com.example.bchen.billsapp;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
@@ -16,8 +18,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ContactViewHolder.ItemClickListener {
 
+    private WordViewModel mWordViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -37,6 +42,15 @@ public class MainActivity extends AppCompatActivity implements ContactViewHolder
             public void onClick(View view) {
                 adapter.models.add(new Contact("test"));
                 adapter.notifyDataSetChanged();
+            }
+        });
+        mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
+
+        mWordViewModel.getAllWords().observe(this, new Observer<List<Word>>() {
+            @Override
+            public void onChanged(@Nullable final List<Word> words) {
+                // Update the cached copy of the words in the adapter.
+                adapter.setWords(words);
             }
         });
     }
@@ -77,4 +91,6 @@ public class MainActivity extends AppCompatActivity implements ContactViewHolder
     public void onItemClick(View v){
         //when item is clicked do this
     }
+
+
 }
