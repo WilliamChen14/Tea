@@ -4,10 +4,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-public class ContactViewHolder extends RecyclerView.ViewHolder {
+public class WordViewHolder extends RecyclerView.ViewHolder {
     private TextView simpleTextView;
 
-    public ContactViewHolder(final View itemView, final ItemClickListener listener) {
+    public WordViewHolder(final View itemView, final ItemClickListener listener) {
         super(itemView);
         simpleTextView = (TextView) itemView.findViewById(R.id.tvAnimalName);
         simpleTextView.setOnClickListener(new View.OnClickListener(){
