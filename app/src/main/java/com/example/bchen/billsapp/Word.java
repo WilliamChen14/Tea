@@ -13,10 +13,23 @@ public class Word {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "word")
-    private String mWord;
+    @ColumnInfo(name = "name")
+    public String Name;
 
-    public Word(String word) {this.mWord = word;}
+    @ColumnInfo(name = "number")
+    public String Number;
 
-    public String getWord(){return this.mWord;}
+    @ColumnInfo(name = "color")
+    public String FavColor;
+
+    @ColumnInfo(name = "age")
+    public Integer Age;
+
+    @ColumnInfo(name = "birthday")
+    public String Birthday;
+
+    @ColumnInfo(name = "animal")
+    public String FavAnimal;
+
+
 }
