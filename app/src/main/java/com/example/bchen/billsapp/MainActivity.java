@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,9 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements WordViewHolder.ItemClickListener {
+public class MainActivity extends AppCompatActivity implements WordListAdapter.ItemClickListener {
 
     private WordViewModel mWordViewModel;
+
+    private ArrayList<Word> wordList= new ArrayList();
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
@@ -34,19 +37,27 @@ public class MainActivity extends AppCompatActivity implements WordViewHolder.It
 
         //creates adapter
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_list_view);
-        final WordListAdapter adapter = new WordListAdapter(this);
+        final WordListAdapter adapter = new WordListAdapter(this, wordList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
 
         mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
 
+        mWordViewModel.getAllWords().observe(this, new Observer<List<Word>>() {
+            @Override
+            public void onChanged(List<Word> words) {
+                wordList.clear();
+                wordList.addAll(words);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
-                startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+                mWordViewModel.insert(new Word("Bollllll chin", "", "", 69, "", ""));
             }
         });
         
@@ -85,9 +96,10 @@ public class MainActivity extends AppCompatActivity implements WordViewHolder.It
     }
 
     @Override
-    public void onItemClick(View v){
+    public void onItemClick(View v, int index){
         //when item is clicked do this
+        Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
+        intent.putExtra("word", wordList.get(index));
+        startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
     }
-
-
 }
