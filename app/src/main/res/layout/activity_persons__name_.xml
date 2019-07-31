@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/namePrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What is the persons name?"
+                android:layout_marginTop="200dp"
+                android:textAlignment="center"
+                android:textSize="30sp"/>
+
+            <EditText
+                android:id="@+id/newPersonsName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Name"
+                android:textSize="20sp"
+                android:layout_marginTop="50dp"/>
+            <Button
+                android:id="@+id/submitButtonForName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

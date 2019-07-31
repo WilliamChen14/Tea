@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,11 +21,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements WordListAdapter.ItemClickListener {
 
-    private WordViewModel mWordViewModel;
+    public WordViewModel mWordViewModel;
 
     private ArrayList<Word> wordList= new ArrayList();
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+
+    public static final int PERSONS_NAME_ACTIVITY_REQUEST_CODE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +61,12 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mWordViewModel.insert(new Word("Bollllll chin", "", "", 69, "", ""));
+                Intent myIntent = new Intent(MainActivity.this, Persons_Name_Activity.class);
+                startActivityForResult(myIntent , PERSONS_NAME_ACTIVITY_REQUEST_CODE);
+
             }
         });
-        
+       //mWordViewModel.insert(new Word("Bollllll chin", "", "", 69, "", ""));
     }
 
     @Override
@@ -101,5 +107,21 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
         Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
         intent.putExtra("word", wordList.get(index));
         startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        try {
+            super.onActivityResult(requestCode, resultCode, data);
+
+            if (requestCode == PERSONS_NAME_ACTIVITY_REQUEST_CODE  && resultCode  == RESULT_OK) {
+
+                String requiredValue = data.getStringExtra("word");
+                mWordViewModel.insert(new Word(requiredValue, "", "", 0, "", ""));            }
+        } catch (Exception ex) {
+            Toast.makeText(MainActivity.this, ex.toString(),
+                    Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
