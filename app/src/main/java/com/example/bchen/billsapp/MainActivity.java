@@ -2,6 +2,7 @@ package com.example.bchen.billsapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,11 +26,13 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
 
     private ArrayList<Word> wordList= new ArrayList();
 
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 52;
 
-    public static final int PERSONS_NAME_ACTIVITY_REQUEST_CODE = 1;
+    public static final int PERSONS_NAME_ACTIVITY_REQUEST_CODE = 15;
 
     public static String nameOfPerson;
+
+    public static final String TAG = "MainActivity";
 
 
     @Override
@@ -108,13 +111,8 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
         //when item is clicked do this
         Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
         intent.putExtra("word", wordList.get(index));
-        intent.putExtra("name", wordList.get(index).getName());
-        //intent.putExtra("color", Word.getFavColor());
-        //intent.putExtra("color",mWord.getFavColor() );
-        intent.putExtra("color",wordList.get(index).getFavColor() );
 
         startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
-
     }
 
     @Override
@@ -123,13 +121,15 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
             super.onActivityResult(requestCode, resultCode, data);
 
             if (requestCode == PERSONS_NAME_ACTIVITY_REQUEST_CODE  && resultCode  == RESULT_OK) {
-
+                Log.d(TAG, "onActivityResult: =====================================");
                 String requiredName = data.getStringExtra("word");
                 nameOfPerson = requiredName;
                 mWordViewModel.insert(new Word(requiredName, "", "", 0, "", ""));            }
-            else if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && requestCode == RESULT_OK){
-                String requiredColor = data.getStringExtra("color");
-                mWordViewModel.update(new Word(nameOfPerson,"",requiredColor,0,"",""));
+            else if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
+                Log.d(TAG, "onActivityResult: iuwaefouabsvbewaluva");
+                Word w = data.getParcelableExtra("word");
+                Log.d(TAG, "onActivityResult:   " + w.number);
+                mWordViewModel.update(w);
             }
         } catch (Exception ex) {
             Toast.makeText(MainActivity.this, ex.toString(),

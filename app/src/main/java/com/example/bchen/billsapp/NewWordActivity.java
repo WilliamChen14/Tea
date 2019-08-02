@@ -25,6 +25,8 @@ public class NewWordActivity extends AppCompatActivity {
 
     private Bitmap imageData;
 
+    private Word word;
+
     private String favColorText = "";
 
     @Override
@@ -39,18 +41,20 @@ public class NewWordActivity extends AppCompatActivity {
             mFavColorView.setText(bundle.getString("color"));
         }
 
+        Intent i = getIntent();
+        word = i.getParcelableExtra("word");
+        ((TextView)findViewById(R.id.nameText)).setText(word.name);
+        ((EditText)findViewById(R.id.phoneNumberText)).setText(word.number);
+        ((EditText)findViewById(R.id.ageText)).setText(word.age + "");
+        ((EditText)findViewById(R.id.birthdayDateText)).setText(word.birthday);
+        ((EditText)findViewById(R.id.favAnimalText)).setText(word.favAnimal);
+        ((EditText)findViewById(R.id.favColorText)).setText(word.favColor);
 
-        mNameView.setText(bundle.getString("name"));
 
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(NewWordActivity.this, MainActivity.class);
-                favColorText = findViewById(R.id.favColorText).toString();
-                intent.putExtra("color", favColorText);
-                startActivityForResult(intent, MAIN_ACTIVITY_REQUEST);
-
-
+                leaveActivity();
                     //replyIntent.putExtra(EXTRA_REPLY, word);
                     //setResult(RESULT_OK, replyIntent);
                     //startActivityForResult(replyIntent, TEXT_REQUEST_CODE);
@@ -87,5 +91,20 @@ public class NewWordActivity extends AppCompatActivity {
 
     protected void onResult(){
 
+    }
+
+
+    private void leaveActivity(){
+        Intent intent = new Intent(NewWordActivity.this, MainActivity.class);
+
+        word.number = ((EditText)findViewById(R.id.phoneNumberText)).getText().toString();
+        word.age = Integer.parseInt(((EditText)findViewById(R.id.ageText)).getText().toString());
+        word.birthday = ((EditText)findViewById(R.id.birthdayDateText)).getText().toString();
+        word.favAnimal = ((EditText)findViewById(R.id.favAnimalText)).getText().toString();
+        word.favColor = ((EditText)findViewById(R.id.favColorText)).getText().toString();
+
+        intent.putExtra("word", word);
+        setResult(MainActivity.RESULT_OK, intent);
+        finish();
     }
 }

@@ -34,6 +34,8 @@ public class Word implements Parcelable {
     @ColumnInfo(name = "animal")
     public String favAnimal;
 
+    //@ColumnInfo
+
 
     public Word(String name, String number, String favColor, int age, String birthday, String favAnimal){
         this.name=name;
