@@ -76,5 +76,12 @@ public class Word implements Parcelable {
         public Word[] newArray(int i) { return new Word[i];}
     };
 
+    public String getFavColor(){
+        return favColor;
+    }
+    public String getName(){
+        return name;
+    }
+
 
 }

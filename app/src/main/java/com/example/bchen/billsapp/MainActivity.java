@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
 
     public static final int PERSONS_NAME_ACTIVITY_REQUEST_CODE = 1;
 
+    public static String nameOfPerson;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +108,13 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
         //when item is clicked do this
         Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
         intent.putExtra("word", wordList.get(index));
+        intent.putExtra("name", wordList.get(index).getName());
+        //intent.putExtra("color", Word.getFavColor());
+        //intent.putExtra("color",mWord.getFavColor() );
+        intent.putExtra("color",wordList.get(index).getFavColor() );
+
         startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+
     }
 
     @Override
@@ -116,8 +124,13 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
 
             if (requestCode == PERSONS_NAME_ACTIVITY_REQUEST_CODE  && resultCode  == RESULT_OK) {
 
-                String requiredValue = data.getStringExtra("word");
-                mWordViewModel.insert(new Word(requiredValue, "", "", 0, "", ""));            }
+                String requiredName = data.getStringExtra("word");
+                nameOfPerson = requiredName;
+                mWordViewModel.insert(new Word(requiredName, "", "", 0, "", ""));            }
+            else if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && requestCode == RESULT_OK){
+                String requiredColor = data.getStringExtra("color");
+                mWordViewModel.update(new Word(nameOfPerson,"",requiredColor,0,"",""));
+            }
         } catch (Exception ex) {
             Toast.makeText(MainActivity.this, ex.toString(),
                     Toast.LENGTH_SHORT).show();
