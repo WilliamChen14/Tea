@@ -18,152 +18,169 @@
             android:orientation="vertical">
 
 
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/blank_profile_picture"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Phone Number"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/phoneNumberText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="phone"
+                android:text= ""
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Age"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/ageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="number"
+                android:text= ""
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="110dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Birthday Date"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/birthdayDateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="date"
+                android:text= ""
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Favorite Animal"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/favAnimalText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text"
+                android:text= ""
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Favorite Color"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/favColorText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:text=""
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Favorite song"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/song"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:text=""
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Hobby"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/hobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:text=""
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                />
 
 
-    <TextView
-        android:id="@+id/nameText"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Name"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        />
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/profilePicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/blank_profile_picture"/>
-    <TextView
-        android:id="@+id/add_new_Catagory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="New Catagory/date"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Phone Number"
-        android:textColor="#000000"
-        android:textSize="20sp"/>
-    <EditText
-        android:id="@+id/phoneNumberText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="phone"
-        android:text= ""
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Age"
-        android:textColor="#000000"
-        android:textSize="20sp"/>
-    <EditText
-        android:id="@+id/ageText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="number"
-        android:text= ""
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Birthday Date"
-        android:textColor="#000000"
-        android:textSize="20sp"/>
-    <EditText
-        android:id="@+id/birthdayDateText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="date"
-        android:text= ""
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Favorite Animal"
-        android:textColor="#000000"
-        android:textSize="20sp"/>
-    <EditText
-        android:id="@+id/favAnimalText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="text"
-        android:text= ""
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Favorite Color"
-        android:textColor="#000000"
-        android:textSize="20sp"/>
-    <EditText
-        android:id="@+id/favColorText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        />
-
-
-    <EditText
-        android:id="@+id/edit_word"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_word"
-        android:inputType="textAutoComplete"
-        android:padding="@dimen/small_padding"
-        android:layout_marginBottom="@dimen/big_padding"
-        android:layout_marginTop="@dimen/big_padding"
-        android:textSize="18sp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"/>
-
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="@string/button_save"
-        android:textColor="@color/buttonLabel" />
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/button_save"
+                android:textColor="@color/buttonLabel" />
 
         </LinearLayout>
     </ScrollView>

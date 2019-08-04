@@ -34,16 +34,24 @@ public class Word implements Parcelable {
     @ColumnInfo(name = "animal")
     public String favAnimal;
 
+    @ColumnInfo(name = "hobby")
+    public String hobby;
+
+    @ColumnInfo(name = "song")
+    public String song;
+
     //@ColumnInfo
 
 
-    public Word(String name, String number, String favColor, int age, String birthday, String favAnimal){
+    public Word(String name, String number, String favColor, int age, String birthday, String favAnimal, String hobby, String song){
         this.name=name;
         this.number = number;
         this.favColor = favColor;
         this.age = age;
         this.birthday = birthday;
         this.favAnimal = favAnimal;
+        this.hobby = hobby;
+        this.song = song;
     }
 
     public Word(Parcel in){
@@ -53,6 +61,8 @@ public class Word implements Parcelable {
         this.age = in.readInt();
         this.birthday = in.readString();
         this.favAnimal = in.readString();
+        this.hobby = in.readString();
+        this.song = in.readString();
     }
 
 
@@ -67,6 +77,8 @@ public class Word implements Parcelable {
         dest.writeInt(age);
         dest.writeString(birthday);
         dest.writeString(favAnimal);
+        dest.writeString(hobby);
+        dest.writeString(song);
 
     }
 

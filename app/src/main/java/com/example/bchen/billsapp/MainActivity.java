@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements WordListAdapter.I
                 Log.d(TAG, "onActivityResult: =====================================");
                 String requiredName = data.getStringExtra("word");
                 nameOfPerson = requiredName;
-                mWordViewModel.insert(new Word(requiredName, "", "", 0, "", ""));            }
+                mWordViewModel.insert(new Word(requiredName, "", "", 0, "", "","",""));            }
             else if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
                 Log.d(TAG, "onActivityResult: iuwaefouabsvbewaluva");
                 Word w = data.getParcelableExtra("word");

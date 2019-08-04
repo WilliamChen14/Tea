@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class NewWordActivity extends AppCompatActivity {
 
-    public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
+    public static final String EXTRA_REPLY = "com.example.android.wordlists.REPLY";
     private static final int CAMERA_PIC_REQUEST = 1337;
     private static final int MAIN_ACTIVITY_REQUEST = 1338;
 
@@ -26,15 +26,15 @@ public class NewWordActivity extends AppCompatActivity {
     private Bitmap imageData;
 
     private Word word;
+    private Bundle bundle;
 
     private String favColorText = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getIntent().getExtras();
+        bundle = getIntent().getExtras();
         setContentView(R.layout.activity_new_word);
-        mEditWordView = findViewById(R.id.edit_word);
         mFavColorView = findViewById(R.id.favColorText);
         mNameView = findViewById(R.id.nameText);
         if(bundle.getString("color")!=null){
@@ -49,6 +49,8 @@ public class NewWordActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.birthdayDateText)).setText(word.birthday);
         ((EditText)findViewById(R.id.favAnimalText)).setText(word.favAnimal);
         ((EditText)findViewById(R.id.favColorText)).setText(word.favColor);
+        ((EditText)findViewById(R.id.hobby)).setText(word.hobby);
+        ((EditText)findViewById(R.id.song)).setText(word.song);
 
 
         final Button button = findViewById(R.id.button_save);
@@ -102,6 +104,9 @@ public class NewWordActivity extends AppCompatActivity {
         word.birthday = ((EditText)findViewById(R.id.birthdayDateText)).getText().toString();
         word.favAnimal = ((EditText)findViewById(R.id.favAnimalText)).getText().toString();
         word.favColor = ((EditText)findViewById(R.id.favColorText)).getText().toString();
+        word.hobby = ((EditText)findViewById(R.id.hobby)).getText().toString();
+        word.song = ((EditText)findViewById(R.id.song)).getText().toString();
+
 
         intent.putExtra("word", word);
         setResult(MainActivity.RESULT_OK, intent);
